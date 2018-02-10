@@ -8,6 +8,7 @@
 
 #import "WeatherCoordinator.h"
 #import "WeatherViewController.h"
+#import "APIProcessor.h"
 
 @interface WeatherCoordinator()
 @property(nonatomic, strong) UINavigationController *navigationVC;
@@ -16,13 +17,24 @@
 
 @implementation WeatherCoordinator
 
+APIProcessor *processor;
+
 - (WeatherCoordinator *)initWithViewController:(UINavigationController *)navigationVC {
-    self.navigationVC = navigationVC;
+    if (self = [super init]) {
+        self.navigationVC = navigationVC;
+    }
     return self;
 }
 
 - (void)start {
     self.weatherVC = self.navigationVC.viewControllers.firstObject;
-    NSLog(@"inside weather coordinator");
-}
+    processor = [APIProcessor sharedProcessor];
+    
+    [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error while fetching");
+        } else {
+            NSLog(@"found data = %@", result);
+        }
+    }];}
 @end

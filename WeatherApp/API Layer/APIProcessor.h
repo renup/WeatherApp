@@ -10,6 +10,8 @@
 
 @interface APIProcessor : NSObject
 
++(id)sharedProcessor;
+
 -(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback;
 
 @end

@@ -16,7 +16,9 @@
 @implementation AppCoordinator
 
 - (AppCoordinator *)initWithViewController:(UINavigationController *)navigationVC {
-    self.navigationVC = navigationVC;
+    if (self = [super init]) {
+        self.navigationVC = navigationVC;
+    }
     return self;
 }
 
