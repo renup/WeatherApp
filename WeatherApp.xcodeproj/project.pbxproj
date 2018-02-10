@@ -17,6 +17,7 @@
 		D7FE2511202EDBC400E337A6 /* WeatherAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE2510202EDBC400E337A6 /* WeatherAppUITests.m */; };
 		D7FE2523202EDE3B00E337A6 /* WeatherViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE2522202EDE3B00E337A6 /* WeatherViewModel.m */; };
 		D7FE2526202EDE5E00E337A6 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE2525202EDE5E00E337A6 /* WeatherModel.m */; };
+		D7FE252A202F299D00E337A6 /* APIProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE2529202F299D00E337A6 /* APIProcessor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		D7FE2522202EDE3B00E337A6 /* WeatherViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherViewModel.m; sourceTree = "<group>"; };
 		D7FE2524202EDE5E00E337A6 /* WeatherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		D7FE2525202EDE5E00E337A6 /* WeatherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		D7FE2528202F299D00E337A6 /* APIProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIProcessor.h; sourceTree = "<group>"; };
+		D7FE2529202F299D00E337A6 /* APIProcessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIProcessor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 			children = (
 				D7FE24EC202EDBC300E337A6 /* AppDelegate.h */,
 				D7FE24ED202EDBC300E337A6 /* AppDelegate.m */,
+				D7FE2527202F296300E337A6 /* API Layer */,
 				D7FE2520202EDDE800E337A6 /* Models */,
 				D7FE251F202EDDD700E337A6 /* ViewModels' */,
 				D7FE251E202EDDC500E337A6 /* ViewControllers */,
@@ -164,6 +168,15 @@
 				D7FE2525202EDE5E00E337A6 /* WeatherModel.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D7FE2527202F296300E337A6 /* API Layer */ = {
+			isa = PBXGroup;
+			children = (
+				D7FE2528202F299D00E337A6 /* APIProcessor.h */,
+				D7FE2529202F299D00E337A6 /* APIProcessor.m */,
+			);
+			path = "API Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +317,7 @@
 				D7FE2523202EDE3B00E337A6 /* WeatherViewModel.m in Sources */,
 				D7FE24FC202EDBC400E337A6 /* main.m in Sources */,
 				D7FE24EE202EDBC400E337A6 /* AppDelegate.m in Sources */,
+				D7FE252A202F299D00E337A6 /* APIProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
