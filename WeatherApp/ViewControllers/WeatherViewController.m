@@ -19,15 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    APIProcessor *processor = [[APIProcessor alloc] init];
-//    
-//    [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
-//        if (error) {
-//            NSLog(@"error while fetching");
-//        } else {
-//            NSLog(@"found data = %@", result);
-//        }
-//    }];
+    APIProcessor *processor = [[APIProcessor alloc] init];
+    
+    [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error while fetching");
+        } else {
+            NSLog(@"found data = %@", result);
+        }
+    }];
 }
 
 

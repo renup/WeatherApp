@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
+//@class WeatherViewController;
 @interface AppCoordinator : NSObject
+
+- (AppCoordinator *)initWithViewController:(UINavigationController *)navigationVC;
 
 - (void)start;
 
