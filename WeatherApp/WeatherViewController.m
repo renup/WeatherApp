@@ -6,13 +6,13 @@
 //  Copyright © 2018 Renu Punjabi. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "WeatherViewController.h"
 
-@interface ViewController ()
+@interface WeatherViewController ()
 
 @end
 
-@implementation ViewController
+@implementation WeatherViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
