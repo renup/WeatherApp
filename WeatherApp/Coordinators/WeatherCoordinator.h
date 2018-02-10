@@ -1,5 +1,5 @@
 //
-//  APIProcessor.h
+//  WeatherCoordinator.h
 //  WeatherApp
 //
 //  Created by Renu Punjabi on 2/10/18.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface APIProcessor : NSObject
+@interface WeatherCoordinator : NSObject
 
--(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback;
+- (void)start;
 
 @end

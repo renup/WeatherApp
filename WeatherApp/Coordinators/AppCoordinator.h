@@ -1,13 +1,15 @@
 //
-//  WeatherViewModel.m
+//  AppCoordinator.h
 //  WeatherApp
 //
 //  Created by Renu Punjabi on 2/10/18.
 //  Copyright © 2018 Renu Punjabi. All rights reserved.
 //
 
-#import "WeatherViewModel.h"
+#import <Foundation/Foundation.h>
 
-@implementation WeatherViewModel
+@interface AppCoordinator : NSObject
+
+- (void)start;
 
 @end
