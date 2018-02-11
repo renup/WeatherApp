@@ -11,6 +11,8 @@
 
 @interface AppCoordinator()
 @property(nonatomic, strong) UINavigationController *navigationVC;
+
+@property(nonatomic, strong)NSMutableArray *coordinatorsArray;
 @end
 
 @implementation AppCoordinator
@@ -24,6 +26,7 @@
 
 - (void)start {
     WeatherCoordinator *weatherCoordinator = [[WeatherCoordinator alloc] initWithViewController:self.navigationVC];
+    [self.coordinatorsArray addObject:weatherCoordinator];
     [weatherCoordinator start];
 }
 

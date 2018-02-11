@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeatherViewController : UITableViewController
+@protocol WeatherViewControllerDelegate <NSObject>
 
+@end
+
+@interface WeatherViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property(nonatomic, strong)NSArray *daysForcastArray;
+@property(nonatomic, weak)id <WeatherViewControllerDelegate> delegate;
+- (void)refreshTableView;
 
 @end
 

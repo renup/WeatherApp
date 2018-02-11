@@ -7,7 +7,7 @@
 //
 
 #import "APIProcessor.h"
-#import "AFNetworking.h"
+//#import "AFNetworking.h"
 
 @implementation APIProcessor
 
@@ -23,26 +23,15 @@ NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Su
 }
 
 -(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSURL *url = [NSURL URLWithString:baseURL];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSessionDataTask *dataTask = [sessionManager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             callback(nil, error);
         } else {
-            callback(responseObject, nil);
+            callback(data, nil);
         }
     }];
-
-//    NSURLSessionDataTask *dataTask = [sessionManager dataTaskWithRequest:request  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//        if (error) {
-//            callback(nil, error);
-//        } else {
-//            callback(responseObject, nil);
-//        }
-//    }];
     [dataTask resume];
 }
 

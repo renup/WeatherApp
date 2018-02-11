@@ -7,24 +7,39 @@
 //
 
 #import "WeatherViewController.h"
+#import "WeatherTableViewCell.h"
 
 @interface WeatherViewController ()
 
+
 @end
 
-@implementation WeatherViewController
+@implementation WeatherViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-   
+    self.daysForcastArray = [[NSArray alloc] init];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshTableView {
+    [self.tableView reloadData];
+}
+
+//MARK: UITableViewDataSourceMethods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.daysForcastArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"weatherCell"];
+    [cell configureCell];
+    return cell;
 }
 
 

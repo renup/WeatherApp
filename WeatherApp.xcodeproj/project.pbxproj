@@ -11,6 +11,8 @@
 		4CD7FF9E5834847C06EB05CD /* libPods-WeatherAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3BB65B937A7973267D309C /* libPods-WeatherAppUITests.a */; };
 		D76118D9202F36C700345462 /* AppCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118D8202F36C700345462 /* AppCoordinator.m */; };
 		D76118DC202F36F900345462 /* WeatherCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118DB202F36F900345462 /* WeatherCoordinator.m */; };
+		D76118E3202FDD6500345462 /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118E2202FDD6500345462 /* WeatherTableViewCell.m */; };
+		D76118E72030767E00345462 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118E62030767E00345462 /* ImageDownloader.m */; };
 		D7FE24EE202EDBC400E337A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE24ED202EDBC300E337A6 /* AppDelegate.m */; };
 		D7FE24F1202EDBC400E337A6 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE24F0202EDBC400E337A6 /* WeatherViewController.m */; };
 		D7FE24F4202EDBC400E337A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7FE24F2202EDBC400E337A6 /* Main.storyboard */; };
@@ -54,6 +56,10 @@
 		D76118D8202F36C700345462 /* AppCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppCoordinator.m; sourceTree = "<group>"; };
 		D76118DA202F36F900345462 /* WeatherCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherCoordinator.h; sourceTree = "<group>"; };
 		D76118DB202F36F900345462 /* WeatherCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherCoordinator.m; sourceTree = "<group>"; };
+		D76118E1202FDD6500345462 /* WeatherTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
+		D76118E2202FDD6500345462 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
+		D76118E52030767E00345462 /* ImageDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		D76118E62030767E00345462 /* ImageDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		D7FE24E9202EDBC300E337A6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FE24EC202EDBC300E337A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7FE24ED202EDBC300E337A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +134,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D76118DD202FDCF200345462 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D76118E1202FDD6500345462 /* WeatherTableViewCell.h */,
+				D76118E2202FDD6500345462 /* WeatherTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D76118E42030764D00345462 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D76118E52030767E00345462 /* ImageDownloader.h */,
+				D76118E62030767E00345462 /* ImageDownloader.m */,
+			);
+			path = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		D7FE24E0202EDBC300E337A6 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +183,8 @@
 				D7FE2520202EDDE800E337A6 /* Models */,
 				D7FE251F202EDDD700E337A6 /* Coordinators */,
 				D7FE251E202EDDC500E337A6 /* ViewControllers */,
+				D76118DD202FDCF200345462 /* Views */,
+				D76118E42030764D00345462 /* Helper Classes */,
 				D7FE24F2202EDBC400E337A6 /* Main.storyboard */,
 				D7FE24F5202EDBC400E337A6 /* Assets.xcassets */,
 				D7FE24F7202EDBC400E337A6 /* LaunchScreen.storyboard */,
@@ -516,7 +542,9 @@
 				D7FE24F1202EDBC400E337A6 /* WeatherViewController.m in Sources */,
 				D76118D9202F36C700345462 /* AppCoordinator.m in Sources */,
 				D7FE2526202EDE5E00E337A6 /* WeatherModel.m in Sources */,
+				D76118E72030767E00345462 /* ImageDownloader.m in Sources */,
 				D7FE24FC202EDBC400E337A6 /* main.m in Sources */,
+				D76118E3202FDD6500345462 /* WeatherTableViewCell.m in Sources */,
 				D76118DC202F36F900345462 /* WeatherCoordinator.m in Sources */,
 				D7FE24EE202EDBC400E337A6 /* AppDelegate.m in Sources */,
 				D7FE252A202F299D00E337A6 /* APIProcessor.m in Sources */,

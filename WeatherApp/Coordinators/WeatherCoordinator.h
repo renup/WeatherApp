@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "WeatherViewController.h"
 
-@interface WeatherCoordinator : NSObject
+@interface WeatherCoordinator : NSObject <WeatherViewControllerDelegate>
 
 - (WeatherCoordinator *)initWithViewController:(UINavigationController *)navigationVC;
 
