@@ -29,11 +29,20 @@ ImageDownloader *sharedDownloader;
     self.dayLabel.text = weather.day;
     self.weatherIconImageView.image = [UIImage imageNamed:@"weather.png"];
     
-    UIImage *img = [sharedDownloader imageFromDiskForIcon:weather.weatherIconURL];
-    
-    if (img != nil) {
-        self.weatherIconImageView.image = img;
+    if (weather.weatherIconURL != nil) {
+        UIImage *img = [sharedDownloader imageFromDiskForIcon:weather.weatherIconURL];
+        
+        if (img != nil) {
+            self.weatherIconImageView.image = img;
+        } else {
+            [sharedDownloader downloadImage:weather.weatherIconURL completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
+                if (error == nil) {
+                    self.weatherIconImageView.image = image;
+                }
+            }];
+        }
     }
+   
     
 }
 
