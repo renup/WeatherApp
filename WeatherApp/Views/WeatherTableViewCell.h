@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherModel.h"
 
 @interface WeatherTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherIconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *temperatureImageView;
 
-- (void)configureCell;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+
+
+- (void)configureCellFor:(NSIndexPath *)indexPath forWeatherModel:(WeatherModel *)weather;
 
 @end

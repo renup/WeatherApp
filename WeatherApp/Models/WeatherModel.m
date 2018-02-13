@@ -13,7 +13,21 @@
 - (WeatherModel *)initWithDictionary:(NSDictionary *)dateDictionary {
     if (self = [super init]) {
         
-        self.date = [self utcToLocalTime:[NSDate dateWithTimeIntervalSince1970:[dateDictionary[@"dt"] doubleValue]]];
+        NSDate *date = [self utcToLocalTime:[NSDate dateWithTimeIntervalSince1970:[dateDictionary[@"dt"] doubleValue]]];
+        
+        self.day = [self dateToString:date];
+        
+        NSArray *weatherArray = dateDictionary[@"weather"];
+        if (weatherArray.count > 0) {
+            NSDictionary *dict = [weatherArray firstObject];
+            self.weatherIconURL = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@%@", dict[@"icon"], @".png"];
+        }
+        
+        NSDictionary *temperatureDict = dateDictionary[@"temp"];
+        id temperature = temperatureDict[@"day"];
+        if (temperature != nil) {
+            self.temperature = [temperature description];
+        }
     }
     return self;
 }
@@ -34,6 +48,12 @@
     [currentTimeZone secondsFromGMTForDate:date];
     return [NSDate dateWithTimeInterval:
             secondsOffset sinceDate:date];
+}
+
+-(NSString *)dateToString:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"EEEE, MMMM d";
+    return [dateFormatter stringFromDate:date];
 }
 
 @end

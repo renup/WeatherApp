@@ -21,8 +21,9 @@
     // Configure the view for the selected state
 }
 
-- (void)configureCell {
-    
+- (void)configureCellFor:(NSIndexPath *)indexPath forWeatherModel:(WeatherModel *)weather {
+    self.temperatureLabel.text = weather.temperature;
+    self.dayLabel.text = weather.day;
 }
 
 @end

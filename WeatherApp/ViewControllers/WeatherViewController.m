@@ -38,7 +38,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"weatherCell"];
-    [cell configureCell];
+    if (self.daysForcastArray.count > 0) {
+        [cell configureCellFor:indexPath forWeatherModel:self.daysForcastArray[indexPath.row]];
+    }
     return cell;
 }
 

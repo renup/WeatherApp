@@ -11,8 +11,8 @@
 @interface WeatherModel : NSObject
 
 @property(nonatomic, strong)NSString *weatherIconURL;
-@property(nonatomic, strong)NSNumber *temperature;
-@property(nonatomic, strong)NSDate *date;
+@property(nonatomic, strong)NSString *temperature;
+@property(nonatomic, strong)NSString *day;
 
 - (WeatherModel *)initWithDictionary:(NSDictionary *)dateDictionary;
 

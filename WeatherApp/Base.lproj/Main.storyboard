@@ -62,7 +62,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dayLabel" destination="DT0-PW-Ldp" id="4o5-4d-Tuu"/>
-                                    <outlet property="temperatureImageView" destination="7T6-ye-ZCz" id="ZIa-Ch-UOO"/>
+                                    <outlet property="temperatureLabel" destination="7T6-ye-ZCz" id="84v-0P-P8c"/>
                                     <outlet property="weatherIconImageView" destination="gNr-uO-t9f" id="Eta-Yu-OAJ"/>
                                 </connections>
                             </tableViewCell>
