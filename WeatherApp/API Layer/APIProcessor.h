@@ -10,8 +10,10 @@
 
 @interface APIProcessor : NSObject
 
-+(id)sharedProcessor;
++(_Nonnull id)sharedProcessor;
 
 -(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback;
+
+- (void)downloadImage:(NSString * _Nonnull)urlString completionHandler:(void (^ _Nullable)(NSData * _Nullable data, NSError * _Nullable error))callback;
 
 @end

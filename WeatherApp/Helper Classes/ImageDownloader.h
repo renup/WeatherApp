@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ImageDownloader : NSObject
 
-- (void)downloadAndCacheImage:(NSString *)imageURLString;
++ (ImageDownloader * _Nonnull)sharedDownloader;
+
+- (void)downloadImage:(NSString * _Nonnull)imageURLString  completionHandler:(void(^ _Nullable)(UIImage * _Nullable image, NSError * _Nullable error))callback;
+
+- (UIImage * _Nullable)imageFromDiskForIcon:(NSString * _Nullable)UrlString;
 
 @end

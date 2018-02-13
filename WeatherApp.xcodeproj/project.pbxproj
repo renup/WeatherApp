@@ -13,6 +13,7 @@
 		D76118DC202F36F900345462 /* WeatherCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118DB202F36F900345462 /* WeatherCoordinator.m */; };
 		D76118E3202FDD6500345462 /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118E2202FDD6500345462 /* WeatherTableViewCell.m */; };
 		D76118E72030767E00345462 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118E62030767E00345462 /* ImageDownloader.m */; };
+		D76118E92033343700345462 /* weather.png in Resources */ = {isa = PBXBuildFile; fileRef = D76118E82033343700345462 /* weather.png */; };
 		D7FE24EE202EDBC400E337A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE24ED202EDBC300E337A6 /* AppDelegate.m */; };
 		D7FE24F1202EDBC400E337A6 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FE24F0202EDBC400E337A6 /* WeatherViewController.m */; };
 		D7FE24F4202EDBC400E337A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7FE24F2202EDBC400E337A6 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		D76118E2202FDD6500345462 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 		D76118E52030767E00345462 /* ImageDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		D76118E62030767E00345462 /* ImageDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		D76118E82033343700345462 /* weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather.png; sourceTree = "<group>"; };
 		D7FE24E9202EDBC300E337A6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FE24EC202EDBC300E337A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7FE24ED202EDBC300E337A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				D76118E42030764D00345462 /* Helper Classes */,
 				D7FE24F2202EDBC400E337A6 /* Main.storyboard */,
 				D7FE24F5202EDBC400E337A6 /* Assets.xcassets */,
+				D76118E82033343700345462 /* weather.png */,
 				D7FE24F7202EDBC400E337A6 /* LaunchScreen.storyboard */,
 				D7FE24FA202EDBC400E337A6 /* Info.plist */,
 				D7FE24FB202EDBC400E337A6 /* main.m */,
@@ -367,6 +370,7 @@
 			files = (
 				D7FE24F9202EDBC400E337A6 /* LaunchScreen.storyboard in Resources */,
 				D7FE24F6202EDBC400E337A6 /* Assets.xcassets in Resources */,
+				D76118E92033343700345462 /* weather.png in Resources */,
 				D7FE24F4202EDBC400E337A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
