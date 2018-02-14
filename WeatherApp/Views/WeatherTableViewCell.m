@@ -25,7 +25,7 @@ ImageDownloader *sharedDownloader;
 }
 
 - (void)configureCellFor:(NSIndexPath *)indexPath forWeatherModel:(WeatherModel *)weather {
-    self.temperatureLabel.text = weather.temperature;
+    self.temperatureLabel.text = [NSString stringWithFormat:@"%@%@",weather.temperature, @"\u00B0"];
     self.dayLabel.text = weather.day;
     self.weatherIconImageView.image = [UIImage imageNamed:@"weather.png"];
     

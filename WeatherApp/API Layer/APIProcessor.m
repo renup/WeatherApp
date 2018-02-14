@@ -39,7 +39,6 @@ NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Su
 - (void)downloadImage:(NSString * _Nonnull)urlString completionHandler:(void (^ _Nullable)(NSData * _Nullable data, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    NSLog(@"DOWNLOAD SUCCESS");
     callback(data, nil);
 }
 
