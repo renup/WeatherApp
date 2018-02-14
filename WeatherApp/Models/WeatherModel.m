@@ -27,10 +27,15 @@
         NSDictionary *temperatureDict = dateDictionary[@"temp"];
         id temperature = temperatureDict[@"day"];
         if (temperature != nil) {
-            self.temperature = [temperature description];
+            double farenhite = [self convertFromCelciusToFarenhite:[temperature doubleValue]];
+            self.temperature = [NSString stringWithFormat:@"%.2f", farenhite];
         }
     }
     return self;
+}
+
+- (double)convertFromCelciusToFarenhite:(double)celcius {
+    return  ((celcius *9)/5) + 32;
 }
 
 /**
