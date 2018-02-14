@@ -13,6 +13,7 @@
 @property(nonatomic, strong)NSString *weatherIconURL;
 @property(nonatomic, strong)NSString *temperature;
 @property(nonatomic, strong)NSString *day;
+@property(nonatomic, strong)NSString *icon;
 
 - (WeatherModel *)initWithDictionary:(NSDictionary *)dateDictionary;
 

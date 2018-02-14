@@ -20,6 +20,7 @@
         NSArray *weatherArray = dateDictionary[@"weather"];
         if (weatherArray.count > 0) {
             NSDictionary *dict = [weatherArray firstObject];
+            self.icon = dict[@"icon"];
             self.weatherIconURL = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@%@", dict[@"icon"], @".png"];
         }
         

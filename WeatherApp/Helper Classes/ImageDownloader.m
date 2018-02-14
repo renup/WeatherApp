@@ -23,38 +23,39 @@ APIProcessor *sharedProcessor;
 }
 
 
-- (void)downloadImage:(NSString * _Nonnull)imageURLString  completionHandler:(void(^ _Nullable)(UIImage * _Nullable image, NSError * _Nullable error))callback {
+- (void)downloadImage:(NSString * _Nonnull)imageURLString forIcon:(NSString * _Nonnull)icon completionHandler:(void(^ _Nullable)(UIImage * _Nullable image, NSError * _Nullable error))callback {
     sharedProcessor = [APIProcessor sharedProcessor];
-    
-    [sharedProcessor downloadImage:imageURLString completionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
-        if (data != nil) {
-            UIImage *image = [UIImage imageWithData:data];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self saveImage:image forUrl:imageURLString];
-                callback(image, nil);
-                return;
-            });
-            callback(nil, error);
-        }
-    }];
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [sharedProcessor downloadImage:imageURLString completionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
+            if (data != nil) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImage *image = [UIImage imageWithData:data];
+
+                    [self saveImage:image forIcon:icon];
+                    callback(image, nil);
+                    return;
+                });
+                callback(nil, error);
+            }
+        }];
+    });
 }
 
-- (void)saveImage:(UIImage *)image forUrl:(NSString *)imageURLString {
+- (void)saveImage:(UIImage *)image forIcon:(NSString *)icon {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:imageURLString];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:icon];
     NSData* data = UIImagePNGRepresentation(image);
     [data writeToFile:path atomically:YES];
 }
 
-- (UIImage * _Nullable)imageFromDiskForIcon:(NSString * _Nullable)UrlString
+- (UIImage * _Nullable)imageFromDiskForIcon:(NSString * _Nullable)icon
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    if (UrlString != nil) {
-        NSString* path = [documentsDirectory stringByAppendingPathComponent:UrlString];
+    if (icon != nil) {
+        NSString* path = [documentsDirectory stringByAppendingPathComponent:icon];
         UIImage* image = [UIImage imageWithContentsOfFile:path];
         return image;
     }

@@ -29,15 +29,17 @@ ImageDownloader *sharedDownloader;
     self.dayLabel.text = weather.day;
     self.weatherIconImageView.image = [UIImage imageNamed:@"weather.png"];
     
-    if (weather.weatherIconURL != nil) {
-        UIImage *img = [sharedDownloader imageFromDiskForIcon:weather.weatherIconURL];
+    if (weather.icon != nil && weather.weatherIconURL != nil) {
+        UIImage *img = [sharedDownloader imageFromDiskForIcon:weather.icon];
         
         if (img != nil) {
             self.weatherIconImageView.image = img;
         } else {
-            [sharedDownloader downloadImage:weather.weatherIconURL completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
+            [sharedDownloader downloadImage:weather.weatherIconURL forIcon:weather.icon completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
                 if (error == nil) {
-                    self.weatherIconImageView.image = image;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.weatherIconImageView.image = image;
+                    });
                 }
             }];
         }
