@@ -72,7 +72,14 @@
                             <outlet property="delegate" destination="gRb-u0-hVd" id="Nxh-T0-Vsc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dfp-Fi-LJn"/>
+                    <navigationItem key="navigationItem" id="dfp-Fi-LJn">
+                        <barButtonItem key="leftBarButtonItem" title="C/F" id="I5h-tW-JbW">
+                            <connections>
+                                <action selector="celciusFahrenheitButtonClicked:" destination="gRb-u0-hVd" id="333-qP-aNf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add City" id="02l-gr-4rW"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRc-jp-aAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

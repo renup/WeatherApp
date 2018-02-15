@@ -15,6 +15,7 @@
 @end
 
 @implementation WeatherViewController 
+BOOL isCelcius = YES;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +43,28 @@
         [cell configureCellFor:indexPath forWeatherModel:self.daysForcastArray[indexPath.row]];
     }
     return cell;
+}
+- (IBAction)celciusFahrenheitButtonClicked:(id)sender {
+    if (isCelcius) {
+        for (WeatherModel *weather in self.daysForcastArray) {
+            weather.temperature = [NSString stringWithFormat:@"%.2f", [self celciusToFahrenhiet:[weather.temperature doubleValue]]];
+            isCelcius = NO;
+        }
+    } else {
+        for (WeatherModel *weather in self.daysForcastArray) {
+            weather.temperature = [NSString stringWithFormat:@"%.2f", [self fahrenhietToCelcius:[weather.temperature doubleValue]]];
+            isCelcius = YES;
+        }
+    }
+    [self.tableView reloadData];
+}
+
+- (double)celciusToFahrenhiet:(double)celcius {
+    return 1.8 * celcius + 32;
+}
+
+- (double)fahrenhietToCelcius:(double) fahrenhiet {
+    return ((fahrenhiet - 32) * 5)/9 ;
 }
 
 

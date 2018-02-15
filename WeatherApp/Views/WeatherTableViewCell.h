@@ -16,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 
-
 - (void)configureCellFor:(NSIndexPath *)indexPath forWeatherModel:(WeatherModel *)weather;
 
 @end
