@@ -15,7 +15,6 @@
 @end
 
 @implementation WeatherViewController 
-BOOL isCelcius = YES;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,18 +43,29 @@ BOOL isCelcius = YES;
     }
     return cell;
 }
-- (IBAction)celciusFahrenheitButtonClicked:(id)sender {
-    if (isCelcius) {
+- (IBAction)celciusFahrenheitSegmentedButtonClicked:(id)sender {
+    UISegmentedControl *segmentButton = (UISegmentedControl *)sender;
+    
+    if (segmentButton.selectedSegmentIndex == 0) {
         for (WeatherModel *weather in self.daysForcastArray) {
             weather.temperature = [NSString stringWithFormat:@"%.2f", [self celciusToFahrenhiet:[weather.temperature doubleValue]]];
-            isCelcius = NO;
         }
     } else {
         for (WeatherModel *weather in self.daysForcastArray) {
             weather.temperature = [NSString stringWithFormat:@"%.2f", [self fahrenhietToCelcius:[weather.temperature doubleValue]]];
-            isCelcius = YES;
         }
     }
+//    if (isCelcius) {
+//        for (WeatherModel *weather in self.daysForcastArray) {
+//            weather.temperature = [NSString stringWithFormat:@"%.2f%@", [self celciusToFahrenhiet:[weather.temperature doubleValue]], @"F"];
+//            isCelcius = NO;
+//        }
+//    } else {
+//        for (WeatherModel *weather in self.daysForcastArray) {
+//            weather.temperature = [NSString stringWithFormat:@"%.2f%@", [self fahrenhietToCelcius:[weather.temperature doubleValue]], @"C"];
+//            isCelcius = YES;
+//        }
+//    }
     [self.tableView reloadData];
 }
 

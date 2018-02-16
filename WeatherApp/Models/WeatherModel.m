@@ -27,15 +27,16 @@
         NSDictionary *temperatureDict = dateDictionary[@"temp"];
         id temperature = temperatureDict[@"day"];
         if (temperature != nil) {
-            double farenhite = [self convertFromCelciusToFarenhite:[temperature doubleValue]];
+            double farenhite = [self convertFromKelvinToCelcius:[temperature doubleValue]];
             self.temperature = [NSString stringWithFormat:@"%.2f", farenhite];
         }
     }
     return self;
 }
 
-- (double)convertFromCelciusToFarenhite:(double)celcius {
-    return  ((celcius *9)/5) + 32;
+//TODO: check from documentation about the unit of temperature.
+- (double)convertFromKelvinToCelcius:(double)kelvin {
+    return  (kelvin - 273.15);
 }
 
 /**
@@ -58,7 +59,7 @@
 
 -(NSString *)dateToString:(NSDate *)date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"EEEE, MMMM d";
+    dateFormatter.dateFormat = @"EEEE, MMM d";
     return [dateFormatter stringFromDate:date];
 }
 

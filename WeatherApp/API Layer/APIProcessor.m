@@ -10,7 +10,6 @@
 
 @implementation APIProcessor
 
-NSURLSessionDataTask *dataTask;
 
 NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Sunnyvale&mode=json&units=metric&cnt=16&appid=adb4503a31093fed77c0a5f39d4c512b";
 
@@ -25,8 +24,7 @@ NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Su
 
 -(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:baseURL];
-
-    dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             callback(nil, error);
         } else {
