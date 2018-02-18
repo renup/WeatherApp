@@ -10,8 +10,13 @@
 
 @implementation APIProcessor
 
+typedef void(^finishBlock)(NSData * _Nullable result, NSError * _Nullable error);
 
-NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Sunnyvale&mode=json&units=metric&cnt=16&appid=adb4503a31093fed77c0a5f39d4c512b";
+NSString *baseURL = @"http://api.openweathermap.org/data/2.5/";
+NSString *appId = @"adb4503a31093fed77c0a5f39d4c512b";
+//NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Sunnyvale&mode=json&units=metric&cnt=16&appid=adb4503a31093fed77c0a5f39d4c512b";
+//let _ = "http://api.openweathermap.org/data/2.5/weather?q=California,us&appid=adb4503a31093fed77c0a5f39d4c512b";
+
 
 +(id)sharedProcessor {
     static APIProcessor *sharedProcessor = nil;
@@ -22,13 +27,37 @@ NSString *baseURL = @"http://api.openweathermap.org/data/2.5/forecast/daily?q=Su
     return sharedProcessor;
 }
 
--(void)fetchWheatherData:(void(^_Nonnull)(NSData * _Nullable result, NSError * _Nullable error))callback {
-    NSURL *url = [NSURL URLWithString:baseURL];
-    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+-(void)fetchWheatherData:(finishBlock)callback {
+    NSString *weatherURLStr = [NSString stringWithFormat:@"%@%@%@", baseURL, @"forecast/daily?q=Sunnyvale&mode=json&units=metric&cnt=16&appid=", appId];
+
+    [self executeRequest:weatherURLStr withBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (error) {
             callback(nil, error);
         } else {
             callback(data, nil);
+        }
+    }];
+}
+
+- (void)fetchCurrentWeatherData:(finishBlock)callback {
+    NSString *currentWeatherURLStr = [NSString stringWithFormat:@"%@%@%@", baseURL, @"weather?q=California,us&appid=", appId];
+    
+    [self executeRequest:currentWeatherURLStr withBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            callback(nil, error);
+        } else {
+            callback(data, nil);
+        }
+    }];
+}
+
+- (void)executeRequest:(NSString *)urlStr withBlock:(void(^)(NSData * _Nullable data, NSError * _Nullable error))completionBlock {
+    NSURL *url = [NSURL URLWithString: urlStr];
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            completionBlock(nil, error);
+        } else {
+            completionBlock(data, nil);
         }
     }];
     [dataTask resume];

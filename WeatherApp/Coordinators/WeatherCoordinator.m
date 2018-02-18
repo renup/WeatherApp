@@ -32,7 +32,6 @@ APIProcessor *processor;
     self.weatherVC.delegate = self;
     processor = [APIProcessor sharedProcessor];
     __weak WeatherCoordinator *weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error while fetching");
@@ -40,8 +39,6 @@ APIProcessor *processor;
                 [self processWeatherData:result];
             }
         }];
-    });
-    
 }
 
 -(void)processWeatherData:(NSData *)data {
