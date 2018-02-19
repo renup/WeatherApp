@@ -32,23 +32,22 @@ APIProcessor *processor;
     self.weatherVC = self.navigationVC.viewControllers.firstObject;
     self.weatherVC.delegate = self;
     processor = [APIProcessor sharedProcessor];
-    __weak WeatherCoordinator *weakSelf = self;
-        [processor fetchCurrentWeatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"error while fetching");
-            } else {
-                NSLog(@"current whether data");
-                [self processCurrentWeatherData:result];
-            }
-        }];
-        
-        [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"error while fetching");
-            } else {
-                [self processWeatherData:result];
-            }
-        }];
+    [processor fetchCurrentWeatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error while fetching");
+        } else {
+            NSLog(@"current whether data");
+            [self processCurrentWeatherData:result];
+        }
+    }];
+    
+    [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error while fetching");
+        } else {
+            [self processWeatherData:result];
+        }
+    }];
 }
 
 - (void)processCurrentWeatherData:(NSData *)data {

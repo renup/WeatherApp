@@ -55,17 +55,6 @@
             weather.temperature = [NSString stringWithFormat:@"%.2f", [self fahrenhietToCelcius:[weather.temperature doubleValue]]];
         }
     }
-//    if (isCelcius) {
-//        for (WeatherModel *weather in self.daysForcastArray) {
-//            weather.temperature = [NSString stringWithFormat:@"%.2f%@", [self celciusToFahrenhiet:[weather.temperature doubleValue]], @"F"];
-//            isCelcius = NO;
-//        }
-//    } else {
-//        for (WeatherModel *weather in self.daysForcastArray) {
-//            weather.temperature = [NSString stringWithFormat:@"%.2f%@", [self fahrenhietToCelcius:[weather.temperature doubleValue]], @"C"];
-//            isCelcius = YES;
-//        }
-//    }
     [self.tableView reloadData];
 }
 
@@ -76,6 +65,8 @@
 - (double)fahrenhietToCelcius:(double) fahrenhiet {
     return ((fahrenhiet - 32) * 5)/9 ;
 }
+
+
 
 
 @end
