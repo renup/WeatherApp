@@ -10,7 +10,6 @@
 
 @implementation APIProcessor
 
-typedef void(^finishBlock)(NSData * _Nullable result, NSError * _Nullable error);
 
 NSString *baseURL = @"http://api.openweathermap.org/data/2.5/";
 NSString *appId = @"adb4503a31093fed77c0a5f39d4c512b";
@@ -63,7 +62,7 @@ NSString *appId = @"adb4503a31093fed77c0a5f39d4c512b";
     [dataTask resume];
 }
 
-- (void)downloadImage:(NSString * _Nonnull)urlString completionHandler:(void (^ _Nullable)(NSData * _Nullable data, NSError * _Nullable error))callback {
+- (void)downloadImage:(NSString * _Nonnull)urlString completionHandler:(finishBlock)callback {
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSLog(@"image download complete");

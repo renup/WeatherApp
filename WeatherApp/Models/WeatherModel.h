@@ -16,5 +16,7 @@
 @property(nonatomic, strong)NSString *icon;
 
 - (WeatherModel *)initWithDictionary:(NSDictionary *)dateDictionary;
+- (WeatherModel *)initWithCurrentWeatherDictionary:(NSDictionary *)currentWeatherDictionary;
+
 
 @end

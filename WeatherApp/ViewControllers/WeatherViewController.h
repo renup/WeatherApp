@@ -14,7 +14,7 @@
 
 @interface WeatherViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, strong)NSArray *daysForcastArray;
+@property(nonatomic, strong)NSMutableArray *daysForcastArray;
 @property(nonatomic, weak)id <WeatherViewControllerDelegate> delegate;
 - (void)refreshTableView;
 

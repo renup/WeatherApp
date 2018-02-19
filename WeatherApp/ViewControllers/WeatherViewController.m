@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.daysForcastArray = [[NSArray alloc] init];
+    self.daysForcastArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

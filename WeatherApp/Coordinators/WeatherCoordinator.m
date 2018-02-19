@@ -14,6 +14,7 @@
 @property(nonatomic, strong) UINavigationController *navigationVC;
 @property(nonatomic, strong)WeatherViewController *weatherVC;
 @property(nonatomic, strong)NSString *cityName;
+
 @end
 
 @implementation WeatherCoordinator 
@@ -32,6 +33,15 @@ APIProcessor *processor;
     self.weatherVC.delegate = self;
     processor = [APIProcessor sharedProcessor];
     __weak WeatherCoordinator *weakSelf = self;
+        [processor fetchCurrentWeatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"error while fetching");
+            } else {
+                NSLog(@"current whether data");
+                [self processCurrentWeatherData:result];
+            }
+        }];
+        
         [processor fetchWheatherData:^(NSData * _Nullable result, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error while fetching");
@@ -39,6 +49,20 @@ APIProcessor *processor;
                 [self processWeatherData:result];
             }
         }];
+}
+
+- (void)processCurrentWeatherData:(NSData *)data {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* jsonDictionary = [NSJSONSerialization
+                                    JSONObjectWithData:data
+                                    options:kNilOptions
+                                    error:&error];
+//    NSString *city = jsonDictionary[@"name"];
+    WeatherModel *weather = [[WeatherModel alloc] initWithCurrentWeatherDictionary:jsonDictionary];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.weatherVC.daysForcastArray addObject: weather];
+    });
 }
 
 -(void)processWeatherData:(NSData *)data {
@@ -60,10 +84,9 @@ APIProcessor *processor;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.weatherVC.daysForcastArray = daysForcastArray;
+        [self.weatherVC.daysForcastArray addObjectsFromArray: daysForcastArray];
         [self.weatherVC refreshTableView];
     });
-   
 }
 
 @end

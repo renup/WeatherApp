@@ -27,9 +27,27 @@
         NSDictionary *temperatureDict = dateDictionary[@"temp"];
         id temperature = temperatureDict[@"day"];
         if (temperature != nil) {
-            double farenhite = [self convertFromKelvinToCelcius:[temperature doubleValue]];
-            self.temperature = [NSString stringWithFormat:@"%.2f", farenhite];
+            double farenhiet = [self convertFromKelvinToCelcius:[temperature doubleValue]];
+            self.temperature = [NSString stringWithFormat:@"%.2f", farenhiet];
         }
+    }
+    return self;
+}
+
+- (WeatherModel *)initWithCurrentWeatherDictionary:(NSDictionary *)currentWeatherDictionary {
+    if (self = [super init]) {
+        NSDictionary *mainDict = currentWeatherDictionary[@"main"];
+        id temprature = mainDict[@"temp"];
+        double farenhiet = [self convertFromKelvinToCelcius:[temprature doubleValue]];
+        self.temperature = [NSString stringWithFormat:@"%.2f", farenhiet];
+        
+        NSArray *weatherArray = currentWeatherDictionary[@"weather"];
+        if (weatherArray.count > 0) {
+            NSDictionary *dict = [weatherArray firstObject];
+            self.icon = dict[@"icon"];
+            self.weatherIconURL = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@%@", dict[@"icon"], @".png"];
+        }
+
     }
     return self;
 }
