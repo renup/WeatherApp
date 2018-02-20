@@ -21,14 +21,14 @@
         if (weatherArray.count > 0) {
             NSDictionary *dict = [weatherArray firstObject];
             self.icon = dict[@"icon"];
-            self.weatherIconURL = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@%@", dict[@"icon"], @".png"];
         }
         
         NSDictionary *temperatureDict = dateDictionary[@"temp"];
         id temperature = temperatureDict[@"day"];
         if (temperature != nil) {
             double farenhiet = [self convertFromKelvinToCelcius:[temperature doubleValue]];
-            self.temperature = [NSString stringWithFormat:@"%.2f", farenhiet];
+            self.temperature = [NSString stringWithFormat:@"%.2f%@",farenhiet, @"\u00B0"];
+
         }
     }
     return self;
@@ -39,13 +39,12 @@
         NSDictionary *mainDict = currentWeatherDictionary[@"main"];
         id temprature = mainDict[@"temp"];
         double farenhiet = [self convertFromKelvinToCelcius:[temprature doubleValue]];
-        self.temperature = [NSString stringWithFormat:@"%.2f", farenhiet];
+        self.temperature = [NSString stringWithFormat:@"%.2f%@",farenhiet, @"\u00B0"];
         
         NSArray *weatherArray = currentWeatherDictionary[@"weather"];
         if (weatherArray.count > 0) {
             NSDictionary *dict = [weatherArray firstObject];
             self.icon = dict[@"icon"];
-            self.weatherIconURL = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@%@", dict[@"icon"], @".png"];
         }
 
     }

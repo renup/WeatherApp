@@ -8,6 +8,7 @@
 
 #import "WeatherViewController.h"
 #import "WeatherTableViewCell.h"
+#import "ImageDownloader.h"
 
 @interface WeatherViewController ()
 
@@ -43,6 +44,45 @@
     }
     return cell;
 }
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //The view for the header
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 100)];
+    
+//    //Set a custom border
+    headerView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1.0].CGColor;
+    headerView.layer.borderWidth = 1.0;
+    
+    //Add a label
+    UILabel* headerLabel = [[UILabel alloc] init];
+    headerLabel.frame = CGRectMake(tableView.frame.size.width/2 + 15, 10, 150, 90);
+    headerLabel.backgroundColor = [UIColor orangeColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:25.0];
+    NSLog(@"%f", CGRectGetMinX(headerLabel.frame) - 150);
+    
+    //Add ImageView
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(headerLabel.frame) - 180, CGRectGetMinY(headerLabel.frame), headerLabel.frame.size.height, headerLabel.frame.size.height)];
+    iconImageView.image = [UIImage imageNamed:@"weather.png"];
+    
+    if (self.daysForcastArray.count > 0) {
+        WeatherModel *weather = self.daysForcastArray[0];
+        headerLabel.text = weather.temperature;
+        ImageDownloader *downloader = [ImageDownloader sharedDownloader];
+        [downloader getImage:weather.icon completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
+            if (!error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    iconImageView.image = image;
+                });
+            }
+        }];
+    }
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    [headerView addSubview:headerLabel];
+    [headerView addSubview:iconImageView];
+    return headerView;
+}
+
 - (IBAction)celciusFahrenheitSegmentedButtonClicked:(id)sender {
     UISegmentedControl *segmentButton = (UISegmentedControl *)sender;
     

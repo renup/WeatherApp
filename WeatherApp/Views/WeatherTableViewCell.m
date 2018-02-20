@@ -25,27 +25,19 @@ ImageDownloader *sharedDownloader;
 }
 
 - (void)configureCellFor:(NSIndexPath *)indexPath forWeatherModel:(WeatherModel *)weather {
-    self.temperatureLabel.text = [NSString stringWithFormat:@"%@%@",weather.temperature, @"\u00B0"];
+    self.temperatureLabel.text = weather.temperature;
     self.dayLabel.text = weather.day;
     self.weatherIconImageView.image = [UIImage imageNamed:@"weather.png"];
     
-    if (weather.icon != nil && weather.weatherIconURL != nil) {
-        UIImage *img = [sharedDownloader imageFromDiskForIcon:weather.icon];
-        
-        if (img != nil) {
-            self.weatherIconImageView.image = img;
-        } else {
-            [sharedDownloader downloadImage:weather.weatherIconURL forIcon:weather.icon completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
-                if (error == nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        self.weatherIconImageView.image = image;
-                    });
-                }
-            }];
-        }
+    if (weather.icon != nil) {
+        [sharedDownloader getImage:weather.icon completionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
+            if (error == nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.weatherIconImageView.image = image;
+                });
+            }
+        }];
     }
-   
-    
 }
 
 @end
