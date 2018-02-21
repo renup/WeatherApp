@@ -12,15 +12,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     [self.contentView.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.contentView.layer setBorderWidth:2.0f];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end
