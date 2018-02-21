@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2433D6AC203DBC930087EE7B /* TemperatureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2433D6AB203DBC930087EE7B /* TemperatureHelper.m */; };
+		2433D6AF203DBD1E0087EE7B /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2433D6AE203DBD1E0087EE7B /* DateHelper.m */; };
 		41B4E6CDA25728D7FD2C5896 /* libPods-WeatherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223CF43AE4A6C729E5E9B77B /* libPods-WeatherApp.a */; };
 		4CD7FF9E5834847C06EB05CD /* libPods-WeatherAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3BB65B937A7973267D309C /* libPods-WeatherAppUITests.a */; };
 		D76118D9202F36C700345462 /* AppCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = D76118D8202F36C700345462 /* AppCoordinator.m */; };
@@ -47,6 +49,10 @@
 /* Begin PBXFileReference section */
 		0CA4E10B854E8F7D15765DDE /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		223CF43AE4A6C729E5E9B77B /* libPods-WeatherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2433D6AA203DBC930087EE7B /* TemperatureHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemperatureHelper.h; sourceTree = "<group>"; };
+		2433D6AB203DBC930087EE7B /* TemperatureHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemperatureHelper.m; sourceTree = "<group>"; };
+		2433D6AD203DBD1E0087EE7B /* DateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		2433D6AE203DBD1E0087EE7B /* DateHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		4EE72E3933B8B53566D5D585 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		50318345D149367B5ADF2BCF /* libPods-WeatherAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		618079E24BA874D5BE682A0A /* Pods-WeatherAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherAppUITests/Pods-WeatherAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +156,10 @@
 			children = (
 				D76118E52030767E00345462 /* ImageDownloader.h */,
 				D76118E62030767E00345462 /* ImageDownloader.m */,
+				2433D6AA203DBC930087EE7B /* TemperatureHelper.h */,
+				2433D6AB203DBC930087EE7B /* TemperatureHelper.m */,
+				2433D6AD203DBD1E0087EE7B /* DateHelper.h */,
+				2433D6AE203DBD1E0087EE7B /* DateHelper.m */,
 			);
 			path = "Helper Classes";
 			sourceTree = "<group>";
@@ -549,8 +559,10 @@
 				D76118E72030767E00345462 /* ImageDownloader.m in Sources */,
 				D7FE24FC202EDBC400E337A6 /* main.m in Sources */,
 				D76118E3202FDD6500345462 /* WeatherTableViewCell.m in Sources */,
+				2433D6AC203DBC930087EE7B /* TemperatureHelper.m in Sources */,
 				D76118DC202F36F900345462 /* WeatherCoordinator.m in Sources */,
 				D7FE24EE202EDBC400E337A6 /* AppDelegate.m in Sources */,
+				2433D6AF203DBD1E0087EE7B /* DateHelper.m in Sources */,
 				D7FE252A202F299D00E337A6 /* APIProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -52,40 +52,46 @@ APIProcessor *processor;
 }
 
 - (void)processCurrentWeatherData:(NSData *)data {
+    NSDictionary* jsonDictionary = [self serializeData:data];
+    if (jsonDictionary != nil) {
+        WeatherModel *weather = [[WeatherModel alloc] initWithDictionary:jsonDictionary];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.weatherVC.daysForcastArray addObject: weather];
+        });
+    }
+}
+
+-(void)processWeatherData:(NSData *)data {
+    NSDictionary* jsonDictionary = [self serializeData:data];
+    if (jsonDictionary != nil) {
+        NSArray *listArray = jsonDictionary[@"list"];
+        
+        NSMutableArray *daysForcastArray = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *day in listArray) {
+            WeatherModel *dayWeather = [[WeatherModel alloc] initWithDictionary:day];
+            [daysForcastArray addObject:dayWeather];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.weatherVC.daysForcastArray addObjectsFromArray: daysForcastArray];
+            [self.weatherVC refreshTableView];
+        });
+    }
+}
+
+- (NSDictionary *)serializeData:(NSData *)data {
     //parse out the json data
     NSError* error;
     NSDictionary* jsonDictionary = [NSJSONSerialization
                                     JSONObjectWithData:data
                                     options:kNilOptions
                                     error:&error];
-    WeatherModel *weather = [[WeatherModel alloc] initWithCurrentWeatherDictionary:jsonDictionary];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.weatherVC.daysForcastArray addObject: weather];
-    });
-}
-
--(void)processWeatherData:(NSData *)data {
-    //parse out the json data
-    NSError* error;
-    NSDictionary* jsonDictionary = [NSJSONSerialization
-                          JSONObjectWithData:data
-                          options:kNilOptions
-                          error:&error];
-    NSDictionary *cityDict = jsonDictionary[@"city"];
-    self.cityName = cityDict[@"name"];
-    NSArray *listArray = jsonDictionary[@"list"];
-    
-    NSMutableArray *daysForcastArray = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *day in listArray) {
-        WeatherModel *dayWeather = [[WeatherModel alloc] initWithDictionary:day];
-        [daysForcastArray addObject:dayWeather];
+    if (!jsonDictionary) {
+        NSLog(@"error while serializing data from server = %@", error);
+        return nil;
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.weatherVC.daysForcastArray addObjectsFromArray: daysForcastArray];
-        [self.weatherVC refreshTableView];
-    });
+    return jsonDictionary;
 }
 
 @end

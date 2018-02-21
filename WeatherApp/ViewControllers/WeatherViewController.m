@@ -9,9 +9,9 @@
 #import "WeatherViewController.h"
 #import "WeatherTableViewCell.h"
 #import "ImageDownloader.h"
+#import "TemperatureHelper.h"
 
 @interface WeatherViewController ()
-
 
 @end
 
@@ -88,25 +88,14 @@
     
     if (segmentButton.selectedSegmentIndex == 0) {
         for (WeatherModel *weather in self.daysForcastArray) {
-            weather.temperature = [NSString stringWithFormat:@"%.2f", [self celciusToFahrenhiet:[weather.temperature doubleValue]]];
+            weather.temperature = [NSString stringWithFormat:@"%.2f", [TemperatureHelper celciusToFahrenhiet:[weather.temperature doubleValue]]];
         }
     } else {
         for (WeatherModel *weather in self.daysForcastArray) {
-            weather.temperature = [NSString stringWithFormat:@"%.2f", [self fahrenhietToCelcius:[weather.temperature doubleValue]]];
+            weather.temperature = [NSString stringWithFormat:@"%.2f", [TemperatureHelper fahrenhietToCelcius:[weather.temperature doubleValue]]];
         }
     }
     [self.tableView reloadData];
 }
-
-- (double)celciusToFahrenhiet:(double)celcius {
-    return 1.8 * celcius + 32;
-}
-
-- (double)fahrenhietToCelcius:(double) fahrenhiet {
-    return ((fahrenhiet - 32) * 5)/9 ;
-}
-
-
-
 
 @end
