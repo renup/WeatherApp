@@ -19,8 +19,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="100" id="QIK-u3-PGS" customClass="HeaderTableViewCell">
+                                <rect key="frame" x="0.0" y="100" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QIK-u3-PGS" id="wSP-fU-pLe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mI8-G5-Sx8">
+                                            <rect key="frame" x="216" y="0.0" width="143" height="99"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YFy-LO-zZF">
+                                            <rect key="frame" x="63" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="aJt-So-WI6"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YFy-LO-zZF" firstAttribute="top" secondItem="mI8-G5-Sx8" secondAttribute="top" id="53O-8F-1dP"/>
+                                        <constraint firstItem="mI8-G5-Sx8" firstAttribute="trailing" secondItem="wSP-fU-pLe" secondAttribute="trailingMargin" id="6rx-6e-hgB"/>
+                                        <constraint firstItem="YFy-LO-zZF" firstAttribute="leading" secondItem="wSP-fU-pLe" secondAttribute="leadingMargin" constant="47" id="ASx-Dp-5gU"/>
+                                        <constraint firstItem="YFy-LO-zZF" firstAttribute="centerY" secondItem="wSP-fU-pLe" secondAttribute="centerY" id="aUB-5j-fIb"/>
+                                        <constraint firstItem="YFy-LO-zZF" firstAttribute="top" secondItem="wSP-fU-pLe" secondAttribute="top" id="dgx-yK-Rzv"/>
+                                        <constraint firstItem="YFy-LO-zZF" firstAttribute="centerY" secondItem="mI8-G5-Sx8" secondAttribute="centerY" id="lHx-Ak-ibz"/>
+                                        <constraint firstItem="mI8-G5-Sx8" firstAttribute="leading" secondItem="YFy-LO-zZF" secondAttribute="trailing" constant="53" id="oOc-Gz-Hew"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="headerImageView" destination="YFy-LO-zZF" id="vI3-9P-b4s"/>
+                                    <outlet property="headerLabel" destination="mI8-G5-Sx8" id="Qu2-MN-iQ9"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="124" id="M6l-1l-gF6" customClass="WeatherTableViewCell">
-                                <rect key="frame" x="0.0" y="100" width="375" height="124"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M6l-1l-gF6" id="8hL-zJ-3w9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
